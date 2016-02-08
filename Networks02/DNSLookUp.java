@@ -25,7 +25,7 @@ public class DNSLookUp
 			str = hostAddress.getHostAddress();
 		}
 		catch (UnknownHostException uhe) {
-			str = ("Unknown host: " + url);
+			str = ("Unknown host");
 		}
 	}
 	public String toString() {
