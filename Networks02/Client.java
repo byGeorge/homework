@@ -24,20 +24,15 @@ public class Client {
         // try to connect to the server
         try {
             csock = new Socket("localhost", SOCKET);
-            while (serving) {
-                // streams! w00t!
-                BufferedReader in = new BufferedReader(new InputStreamReader(csock.getInputStream()));
-                // creates a printwriter for the socket that autoflushes the stream
-                PrintWriter print = new PrintWriter(csock.getOutputStream(), true);
-                //prints argument to string
-                print.println(args[0]);
-
-                //reads response
-                String input;
-                while ((input = in.readLine()) != null) {
-                    System.out.println(input);
-                }
-                serving = false;
+            // streams! w00t!
+            BufferedReader in = new BufferedReader(new InputStreamReader(csock.getInputStream()));
+            // creates a printwriter for the socket that autoflushes the stream
+            PrintWriter print = new PrintWriter(csock.getOutputStream(), true);
+            print.println(args[0]);
+            String input;
+            while ((input = in.readLine()) != null) {
+                System.out.println(args[0]);
+                System.out.println(input);
             }
         }
         catch (ConnectException c) {
