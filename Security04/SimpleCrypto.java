@@ -10,8 +10,8 @@ public class SimpleCrypto
 
  // choose two distinct primes with p < q
 
-      long p = 13;
-      long q = 19;
+      long p = 11;
+      long q = 13;
 
       System.out.println("The secret values are p = " + p + " q = " + q );
 
@@ -23,7 +23,7 @@ public class SimpleCrypto
 
 // Compute phi = (p-1)*(q-1).
       long phi = (p - 1) * ( q - 1);
-      System.out.println("The value of Euler's totient is " + phi);
+      System.out.println("The value of Euler's quotient is " + phi);
 
  // choose a random prime e between 1 and phi, exclusive, so that e
  // has no common factors with phi.

@@ -15,7 +15,6 @@ public class Encode {
     public Encode() {
         int e = 0, n = 0;
         char m;
-        BigInteger p;
         String user;
         Scanner input = new Scanner(System.in);
         boolean valid = false;
@@ -47,13 +46,23 @@ public class Encode {
                     break;
                 }
                 m = user.charAt(0);
-                p = BigInteger.valueOf(m).pow(e);
-                System.out.println("Encoded character " + m + ": " + (p.remainder(BigInteger.valueOf(n))));
+                System.out.println("Encoded character " + m + ": " + expomod(m, e, n));
             }
             catch (StringIndexOutOfBoundsException oobe){
-                System.out.println("Typing a character would be more effective");
+                System.out.println("Typing a character would be more effective.");
             }
         }
+    }
+
+    // Let a and n be two long integers with n > 0. We wish to compute
+    // x = a^n mod z.
+    static long expomod(long a, long n, long z) {
+        long r = a % z;
+
+        for(long i = 1; i < n; i++) {
+            r = (a * r) % z;
+        }
+        return r;
     }
 
     public static void main(String[] args){
