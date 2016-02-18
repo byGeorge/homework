@@ -21,12 +21,12 @@ public class KeyGen {
         // user input loop (in case the user doesn't know how to follow instructions)
         while (!valid) {
             // getting user input
-            System.out.println("First, I'll need your RSA info. What is the larger of your two (positive) primes?");
+            System.out.println("First, I'll need your RSA info. What is the smaller of your two (positive) primes?");
             p = input.nextInt();
-            System.out.println("Great! Now I'll need the second, smaller prime ");
+            System.out.println("Great! Now I'll need the second, larger prime ");
             q = input.nextInt();
             // Oh look! the user can follow directions!
-            if (p > q && p > 0 && q > 0 && p != q) {
+            if (p < q && p > 0 && q > 0) {
                 valid = true;
             }
             // or not.
@@ -38,6 +38,7 @@ public class KeyGen {
         System.out.println("n: " + calculated[0] + ", phi: " + calculated[1] +
                 ", e: " + calculated [2] + ", d: " + calculated[3]);
     }
+
 
     /**
      * Finds first common denominator (I think)
