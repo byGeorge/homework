@@ -37,6 +37,8 @@ public class KeyGen {
         long[] calculated = Calculate(p, q);
         System.out.println("n: " + calculated[0] + ", phi: " + calculated[1] +
                 ", e: " + calculated [2] + ", d: " + calculated[3]);
+        System.out.println("Your public key is: ( " + calculated[2] + ", " + calculated[0] + ")");
+        System.out.println("Your private key is: ( " + calculated[3] + ", " + calculated[0] + ")");
     }
 
 
