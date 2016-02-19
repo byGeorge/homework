@@ -1,0 +1,83 @@
+﻿Part A. An RSA Toy Example
+
+RSA Public Key Cryptography
+(0) You may recall we said that RSA is slow compared to symmetric ciphers. Test this out:
+Login to Cerberus and run these two commands (you have to control-C to stop them)
+openssl speed rsa
+openssl speed aes
+
+What are the two times you see reported for each?
+rsa 9.97 and 9.98s
+aes 2.99 and 3.00s
+
+(1) Study the Java program that is provided on canvas (SimpleCrypto.java). Compile this (use your favorite IDE) and run it.
+ 
+To further understand it, break this program into three smaller programs: KeyGen.java, Encode.java, and Decode.java. Each of these programs will do the functions the name suggests. Modify them so that each will provide directions to the user, and each should display their results so they are easy to understand. Here are some details:
+
+(a) The program KeyGen.java will ask the user for the RSA secret information, that is, two primes (p and q) with p < q. It will compute n, phi, e, and d and will display these values to the user in a nicely formatted way.
+
+(b) The program Encode.java will ask the user for a public key pair (e,n) and a single character to be encoded. The character (m) will be entered from the keyboard and it will be used to compute c = me mod n. This encoded value (c) will then be displayed to the user as an integer.
+
+(c) The program Decode.java will ask the user for a private key pair (d,n) and a single integer (c) to be decoded. The program will then compute m = cd mod n and display the result as a character.
+
+
+Post your programs from part (1).
+Now answer the following questions (using your code), and post your answers too:
+	(a) Send a message to Ginger. The message that you want to send is the left brace character ‘{‘. You know that Ginger’s (e,n) pair is (5,437). What integer will you send ? 
+16
+
+	(b) Send another message to Ginger. The message that you want to send is the lower case character j.You know that Ginger’s (e,n) pair is (5,437). What integer will you send ?
+406
+
+	(c) Ginger receives a message. It is the integer 16. Ginger’s (d,n) pair is (317,437). What message did Ginger receive? 
+{
+
+	(d) An eavesdropper is watching all communications that are destined for Jen. The eavesdropper sees the pair (9,247). He knows that the first number is an encoded ASCII value and the second number is Jen’s value for n. He also knows the algorithm that Jen uses to determine n, phi, e and d from p and q. The eavesdropper sees that Jen has chosen a rather small value for n and so decides to break this code. What ASCII character is being sent to Jen?
+Q
+
+    (e) Consider an RSA key set with p = 11, q = 29, n = 319, and e = 3. What is the value of d?
+187
+
+What is the encryption of the single integer message m = 100 ?  (This is one integer not 3 characters.)
+
+ 
+Part B.  Using Java Security Classes
+I’ve included a basic Java cryptography program below (and on Canvas) that shows some features of the Java security and JCA and JCE environments.  
+It encrypts/decrypts a simple text string using regular DES.  It shows what classes to import, how to work with security classes, including key generation, and simple encryption and decryption.  Recall that DES is symmetric, so a single key is used.
+ 
+Compile and run the sample program. Try to understand what each section is doing (you may even choose to add comments to explain it).  We haven’t talked about all of the components here – the internet has many other examples.  I encourage you to experiment with the various security features, in order to ground your understanding of our discussion of Java security.
+ 
+Your task is to modify the procedures in the programs from Part A to include Java security classes.
+
+You will extend these to allow a user to encrypt and decrypt a string using a symmetric block encryption algorithm (such as AES, TripleDES (DESede),  Blowfish, etc).  Pick one you want to work with, but AES is the standard now.
+You will submit your Java files on Canvas.  
+Your credit will be based largely on your comments!  Please add comments that explain what your code is doing.
+The reason is that many examples coded in java exist on the Internet!  You may use such examples to help learn how java encryption works and how to use the Java security classes.  But you will have to add sufficient comments to show that you have worked with the code and gained an understanding of how it works!
+ 
+Your code may store keys internally, or write and read them as files.  Of course in real applications this would be a mistake – you should use the keystore of Java for that. You should modify the programs to accept more than a single character to encrypt (perhaps ask for input from the user).
+I have also included some tips below like code for file I/O  if you want to work with files.
+  // Convert to a hex string - a solution is  from here http://stackoverflow.com/questions/9655181/convert-from-byte-array-to-hex-string-in-java (Links to an external site.)   And here is a line to do it:
+encryptionKey = new BigInteger(1, keyBytes).toString(16); ;
+  
+Java IO: here is some code to open files for an encryption algorithm:
+//Open File - must be named something.txt
+                                    inputfileName = BR1.readLine();
+                                    if ((inputfileName.length() >=5)&&(inputfileName.contains(".txt")))
+                                    {
+                                                encryptedOutputfileName = "encrypted_" + inputfileName;
+                                                decryptedOutputfileName = "decrypted_" + inputfileName;
+                                                keyFile = "keyfile_" + inputfileName;
+ 
+                                                File plainText = new File(inputfileName );
+                                                FileInputStream FIStream = new FileInputStream(plainText);
+ 
+                                                if (plainText.length() > Integer.MAX_VALUE)
+                                                            System.out.println("The file" + plainText.getName() + " is too big.");
+ 
+                                                int buffersize = (int)plainText.length();
+                                                byte[] contents = new byte[buffersize];
+                                                FIStream.read(contents, 0, buffersize);
+                                                FIStream.close();
+                                                FIStream = null;
+Etc…
+
