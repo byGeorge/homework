@@ -39,7 +39,7 @@ Q
 187
 
 What is the encryption of the single integer message m = 100 ?  (This is one integer not 3 characters.)
-
+p: 13, q: 109, n: 1417, phi: 1296, e: 5, d: 1037 (wrote program Mequals.java to solve this)
  
 Part B.  Using Java Security Classes
 I’ve included a basic Java cryptography program below (and on Canvas) that shows some features of the Java security and JCA and JCE environments.  

@@ -1,6 +1,5 @@
 package Security04;
 
-import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -52,6 +51,13 @@ public class Encode {
                 System.out.println("Typing a character would be more effective.");
             }
         }
+    } // end Encode()
+
+
+
+    /** method to help me answer the m = 100 question */
+    public long Encode(char m, int e, int n){
+        return expomod(m, e, n);
     }
 
     // Let a and n be two long integers with n > 0. We wish to compute
