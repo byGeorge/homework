@@ -1,4 +1,4 @@
-package Networkslab05.dining_philosophers;
+package Networkslab05.dining;
 
 /**
  * Philosopher.java
