@@ -1,4 +1,4 @@
-package Networkslab05.dining;
+package Networkslab05.part1;
 
 /**
  * Implementation of the Manager interface that

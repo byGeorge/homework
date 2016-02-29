@@ -1,4 +1,6 @@
-package Networkslab05.dining /**
+package Networkslab05.dowork;
+
+/**
  * DoWorkCV.java
  *
  * Figure 6.38

@@ -1,4 +1,6 @@
-package Networkslab05.dining /**
+package Networkslab05.dining;
+
+/**
  * DiningServer.java
  *
  * This class contains the methods called by the  philosophers.

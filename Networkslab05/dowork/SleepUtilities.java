@@ -1,4 +1,4 @@
-package Networkslab05.dining
+package Networkslab05.dowork;
 
 /**
  * Utilities for causing a thread to sleep.

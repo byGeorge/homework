@@ -1,4 +1,4 @@
-package Networkslab05.dining;
+package Networkslab05.part1;
 
 /**
  * Interface for a license manager
