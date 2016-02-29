@@ -16,10 +16,10 @@ public class TestIt
    public static final int NUMBER_OF_THREADS = 5;
 
    public static void main(String args[]) {
-      DoWork pile = new DoWorkNotify();
+      //DoWork pile = new DoWorkNotify();
 
-      // Change to this line to see it work correctly
-      //DoWorkCV pile = new DoWorkCV();
+       //Change to this line to see it work correctly
+      DoWorkCV pile = new DoWorkCV();
 
       Thread[] bees = new Thread[NUMBER_OF_THREADS];
 
