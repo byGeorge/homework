@@ -11,7 +11,7 @@ import java.util.concurrent.Callable;
 
 /**
  * Created by george on 2/10/16.
- */
+
 public class Version1 {
     class Summation implements
     {
@@ -29,7 +29,7 @@ public class Version1 {
             return new Integer(sum);
         }
     }
-}
+}*/
 import java.net.*;
 import java.io.*;
 
