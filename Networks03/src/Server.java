@@ -1,4 +1,4 @@
-package Networks03;
+package Networks03.src;
 
 import java.io.BufferedReader;
 import java.io.IOException;
