@@ -4,13 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 
 /**
- * Listens at port 6052 for client connection. Services each client in a separate thread.
+ * Listens at port 8080 for client connection. Services each client in a separate thread.
  * Client will pass an IP address through the socket and server will close the connection.
  * If the address is valid, the server will perform a DNS lookup and reply with the IP
  * address and close the connection. If the address is not valid, the server will simply
@@ -54,7 +51,7 @@ public class Server implements Runnable {
         // running on a new thread
         if (csock.isConnected()) {
             try {
-                // creates a print stream for the socket that autoflushes the stream
+                // creates a print stream for the client socket that autoflushes the stream
                 PrintStream print = new PrintStream(csock.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(csock.getInputStream()));
 
@@ -62,8 +59,18 @@ public class Server implements Runnable {
                 String input;
                 if ((input = in.readLine()) != null) {
                     request(input);
-                    print.println("GET /" + resource + " HTTP/1.1\r\nHost: " + host + "\r\n" + "Connection: close\r\n\r\n");
                 }
+
+                //Shiny! that should have done something! Now open streams to the host server
+
+                Socket out = new Socket(host, 80);
+                PrintStream printout = new PrintStream(out.getOutputStream(), true);
+                BufferedReader readout = new BufferedReader(new InputStreamReader(out.getInputStream()));
+                printout.println("GET /" + resource + " HTTP/1.1\r\nHost: " + host + "\r\n" + "Connection: close\r\n\r\n");
+                if ((input = readout.readLine()) != null) {
+                    print.println(input);
+                }
+                out.close();
                 csock.close();
             } catch (Exception e) {
                 System.out.println("Something went wrong");
