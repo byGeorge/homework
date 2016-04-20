@@ -1,3 +1,4 @@
+package opsys_hw05.src;
 /**
  * Task to be scheduled by the scheduling alogrithm.
  *

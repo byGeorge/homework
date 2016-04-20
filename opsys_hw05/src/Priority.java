@@ -1,3 +1,4 @@
+package opsys_hw05.src;
 /**
  * FCFS scheduling algorithm.
  */

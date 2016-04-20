@@ -1,3 +1,5 @@
+package opsys_hw05.src;
+
 /**
  * Interface representing a generic scheduling algorithm.
  *
